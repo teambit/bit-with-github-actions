@@ -40,4 +40,4 @@ jobs:
 
         bit status
         bit tag -a
-        bit export $BIT_COLLECTION --include-dependencies
+        bit export $BIT_COLLECTION
