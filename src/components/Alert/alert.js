@@ -4,5 +4,5 @@ import { Label } from "@bit/bit.base-ui.elements.label";
 import styles from './alert.module.css';
 
 export const Alert = ({ text, color = getRandomColor() }) => {
-  return <Label color={color} className={styles.alert}>{text}</Label>;
+  return <Label color={color} className={styles.alert}>{text}</Label>; 
 };
