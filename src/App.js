@@ -1,6 +1,7 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import { Alert } from "./components/Alert";
 
 function App() {
   return (
@@ -18,6 +19,16 @@ function App() {
         >
           Learn React
         </a>
+        With color property
+        <Alert text="Josh" color="lightpink" />
+        <Alert text="Josh" color="lightgreen" />
+        <Alert text="Josh" color="lightblue" />
+        <Alert text="Josh" color="orange" />
+        With random color
+        <Alert text="Josh" />
+        <Alert text="Josh" />
+        <Alert text="Josh" />
+        <Alert text="Josh" />
       </header>
     </div>
   );
