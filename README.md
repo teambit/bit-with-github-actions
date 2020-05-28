@@ -13,3 +13,10 @@ For installing private components, we need to save our `BIT_TOKEN` in the reposi
 Follow these setups to do this:
 - Creating encrypted secrets for a repository (https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets#creating-encrypted-secrets-for-a-repository).
 - Name the new scret `BIT_TOKEN` and set your Bit token in the value, to get your token, run `bit config get user.token` on your local terminal.
+- Update the `.npmrc` file to include the token:
+```
+@bit:registry=https://node.bit.dev
+//node.bit.dev/:_authToken=$BIT_TOKEN
+always-auth=true
+```
+- Now use your secret in the workflows file, [read more about it](https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets#using-encrypted-secrets-in-a-workflow).

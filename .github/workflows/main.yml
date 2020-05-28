@@ -24,6 +24,8 @@ jobs:
 
     # Install dependencies and build app
     - name: Install Dependencies
+      env:
+        BIT_TOKEN: ${{ secrets.BIT_TOKEN }}
       run: npm install
     - name: Build app
       run: npm run build
