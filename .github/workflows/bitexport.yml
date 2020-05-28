@@ -28,7 +28,7 @@ jobs:
     - name: Install Dependencies
       run: npm install
     - name: Install bit-bin
-      run: npm install bit-bin -g
+      run: sudo npm install bit-bin -g
     - name: Bit tag & Bit export
       run: |
         bit config set analytics_reporting false
