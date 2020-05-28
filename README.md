@@ -57,4 +57,39 @@ jobs:
 - Read how creating encrypted secrets for a repository (https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets#creating-encrypted-secrets-for-a-repository).
 - Create a new secret and name it `BIT_COLLECTION` and set your collection in the value: `<USER_NAME>.<COLLECTION_NAME>`. For example: `joshk.private-components`.
 - Create a new workflow file for bit export commands. Inside the file we need to do the following: configure Bit token, install Bit, run bit import, build, tag and export. Check out the [workflows file](.github/workflows/bitexport.yml) I created for this.
+Bit export workflow file example:
+```
+...
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    env:
+      BIT_TOKEN: ${{ secrets.BIT_TOKEN }}
+      BIT_COLLECTION: ${{ secrets.BIT_COLLECTION }}
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2
+
+    # Install dependencies and build app
+    - name: Install Dependencies
+      run: npm install
+    - name: Install bit-bin
+      run: sudo npm install bit-bin -g
+    - name: Bit tag & Bit export
+      run: |
+        bit config set analytics_reporting false
+        bit config set anonymous_reporting false
+        bit config set user.token $BIT_TOKEN
+        bit config 
+
+        bit -v && bit import && bit build
+
+        bit status
+        bit tag -a
+        bit export $BIT_COLLECTION
+...
+```
 Bit will export components only if changes are made.
