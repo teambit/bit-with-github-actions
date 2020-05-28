@@ -11,8 +11,8 @@ always-auth=true
 
 For installing private components, we need to save our `BIT_TOKEN` in the repository settings.
 Follow these setups to do this:
-- Creating encrypted secrets for a repository (https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets#creating-encrypted-secrets-for-a-repository).
-- Name the new scret `BIT_TOKEN` and set your Bit token in the value, to get your token, run `bit config get user.token` on your local terminal.
+- Read how creating encrypted secrets for a repository (https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets#creating-encrypted-secrets-for-a-repository).
+- Create a new secret and name it `BIT_TOKEN` and set your Bit token in the value, to get your token, run `bit config get user.token` on your local terminal.
 - Update the `.npmrc` file to include the token registry:
 ```
 @bit:registry=https://node.bit.dev
@@ -42,3 +42,12 @@ jobs:
       run: npm run build
 ...
 ```
+
+## bit export during during CI
+
+- Create your collection in [bit.dev](bit.dev).
+- Import the [compiler you need](https://bit.dev/bit/envs).
+- Track, tag and export components to your collection, [Alert component for example](src/components/Alert.js).
+- Read how creating encrypted secrets for a repository (https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets#creating-encrypted-secrets-for-a-repository).
+- Create a new secret and name it `BIT_COLLECTION` and set your collection in the value: `<USER_NAME>.<COLLECTION_NAME>`. For example: `joshk.private-components`.
+- Add a script command in your `package.json` file: `"bit-build": "bit -v && bit import && bit build"`, so we will run this command through the CI.

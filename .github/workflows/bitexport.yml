@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Build CI
+name: Bit export CI
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
@@ -18,6 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       BIT_TOKEN: ${{ secrets.BIT_TOKEN }}
+      BIT_COLLECTION: ${{ secrets.BIT_COLLECTION }}
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -26,5 +27,15 @@ jobs:
     # Install dependencies and build app
     - name: Install Dependencies
       run: npm install
-    - name: Build app
-      run: npm run build
+    - name: Bit tag && Bit export
+      run: |
+      bit config set analytics_reporting false
+      bit config set anonymous_reporting false
+      bit config set user.token $(BIT_TOKEN)
+      bit config 
+  
+      npm run bit-build
+      
+      bit status
+      bit tag -a
+      bit export $(BIT_COLLECTION)
