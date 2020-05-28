@@ -1,11 +1,9 @@
 # Bit with GitHub Actions
+How to integrate Bit in your workflow with GitHub Actions.
 
-## npm install for [Bit components](https://github.com/teambit/bit) during CI (for projects that install components)
+## npm install for public or private [Bit components](https://github.com/teambit/bit) during CI (for projects that install components)
 
-- ...
-- In your project root directory add an `.npmrc` file and put the following code inside:
+For public components you just need to config the bit registry, to do so create in your project root directory an `.npmrc` file and put the following code inside:
 ```
 @bit:registry=https://node.bit.dev
-//node.bit.dev/:_authToken=$BIT_TOKEN
-always-auth=true
 ```
