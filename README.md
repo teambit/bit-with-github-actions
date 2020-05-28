@@ -1,4 +1,10 @@
 # Bit with GitHub Actions
+
+![Build CI](https://github.com/teambit/bit-with-github-actions/workflows/Build%20CI/badge.svg)
+![Bit export CI](https://github.com/teambit/bit-with-github-actions/workflows/Bit%20export%20CI/badge.svg)
+[![components](https://img.shields.io/badge/dynamic/json.svg?color=6e3991&label=components&query=payload.totalComponents&url=https%3A%2F%2Fapi.bit.dev%2Fscope%2Fjoshk%2Fbit-with-github-actions)](https://bit.dev/joshk/bit-with-github-actions)
+[![Slack](https://badgen.now.sh/badge/chat/on%20Slack/cyan)](https://join.slack.com/t/bit-dev-community/shared_invite/enQtNzM2NzQ3MTQzMTg3LWI2YmFmZjQwMTkxNmFmNTVkYzU2MGI2YjgwMmJlZDdkNWVhOGIzZDFlYjg4MGRmOTM4ODAxNTIxMTMwNWVhMzg)
+
 How to integrate Bit in your workflow with GitHub Actions.
 
 ## npm install for public or private [Bit components](https://github.com/teambit/bit) during CI (for projects that install components)
@@ -50,5 +56,5 @@ jobs:
 - Track, tag and export components to your collection, [Alert component for example](src/components/Alert.js).
 - Read how creating encrypted secrets for a repository (https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets#creating-encrypted-secrets-for-a-repository).
 - Create a new secret and name it `BIT_COLLECTION` and set your collection in the value: `<USER_NAME>.<COLLECTION_NAME>`. For example: `joshk.private-components`.
-- Create a new workflow file for bit export commands. Inside the file we need to configure Bit token, Install Bit and run bit import, build, tag and export. Check out the [workflows file](.github/workflows/bitexport.yml) I created for this.
-- Make sure the file has execution permissions by running `chmod +x ./.github/workflows/bitexport.yml`.
+- Create a new workflow file for bit export commands. Inside the file we need to do the following: configure Bit token, install Bit, run bit import, build, tag and export. Check out the [workflows file](.github/workflows/bitexport.yml) I created for this.
+Bit will export components only if changes are made.
