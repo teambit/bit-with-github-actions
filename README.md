@@ -50,4 +50,5 @@ jobs:
 - Track, tag and export components to your collection, [Alert component for example](src/components/Alert.js).
 - Read how creating encrypted secrets for a repository (https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets#creating-encrypted-secrets-for-a-repository).
 - Create a new secret and name it `BIT_COLLECTION` and set your collection in the value: `<USER_NAME>.<COLLECTION_NAME>`. For example: `joshk.private-components`.
-- Add a script command in your `package.json` file: `"bit-build": "bit -v && bit import && bit build"`, so we will run this command through the CI.
+- Create a new workflow file for bit export commands. Inside the file we need to configure Bit token, Install Bit and run bit import, build, tag and export. Check out the [workflows file](.github/workflows/bitexport.yml) I created for this.
+- Make sure the file has execution permissions by running `chmod +x ./.github/workflows/bitexport.yml`.
