@@ -33,11 +33,11 @@ jobs:
       run: |
         bit config set analytics_reporting false
         bit config set anonymous_reporting false
-        bit config set user.token $(BIT_TOKEN)
+        bit config set user.token $BIT_TOKEN
         bit config 
 
         bit -v && bit import && bit build
 
         bit status
         bit tag -a
-        bit export $(BIT_COLLECTION)
+        bit export $BIT_COLLECTION
