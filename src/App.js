@@ -2,11 +2,14 @@ import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import { Alert } from "./components/Alert";
+//using a component from a private collection
+import { TitleH1 } from '@bit/joshk.private-components.title-h1';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <TitleH1 text="My Title" />
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.

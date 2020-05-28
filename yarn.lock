@@ -1090,6 +1090,11 @@
   resolved "https://node.bit.dev/joshk.jotils.get-random-color/-/joshk.jotils.get-random-color-2.1.1.tgz#fd586f9abd839f2e5dbe2fbbb51776adccd3ba0b"
   integrity sha1-/Vhvmr2Dny5dvi+7tRd2rczTugs=
 
+"@bit/joshk.private-components.title-h1@^0.0.1":
+  version "0.0.1"
+  resolved "https://node.bit.dev/joshk.private-components.title-h1/-/joshk.private-components.title-h1-0.0.1.tgz#314138fe413cfed8486729fa33b4242c8cf6fce5"
+  integrity sha1-MUE4/kE8/thIZyn6M7QkLIz2/OU=
+
 "@cnakazawa/watch@^1.0.3":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@cnakazawa/watch/-/watch-1.0.4.tgz#f864ae85004d0fcab6f50be9141c4da368d1656a"

@@ -5,6 +5,7 @@
   "dependencies": {
     "@bit/bit.base-ui.elements.label": "^1.0.1",
     "@bit/joshk.jotils.get-random-color": "^2.1.1",
+    "@bit/joshk.private-components.title-h1": "^0.0.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
