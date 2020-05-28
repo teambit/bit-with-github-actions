@@ -27,14 +27,16 @@ jobs:
     # Install dependencies and build app
     - name: Install Dependencies
       run: npm install
-    - name: Bit tag && Bit export
+    - name: Install bit-bin
+      run: npm install bit-bin -g
+    - name: Bit tag & Bit export
       run: |
         bit config set analytics_reporting false
         bit config set anonymous_reporting false
         bit config set user.token $(BIT_TOKEN)
         bit config 
 
-        npm run bit-build
+        bit -v && bit import && bit build
 
         bit status
         bit tag -a
