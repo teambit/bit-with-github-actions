@@ -41,3 +41,9 @@ jobs:
           bit status
           bit tag -a
           bit export $BIT_COLLECTION
+      - name: Commit changes
+        run: |
+          git config --global user.name 'Josh Kuttler'
+          git config --global user.email 'JoshK2@users.noreply.github.com'
+          git commit -am "Automated report"
+          git push
