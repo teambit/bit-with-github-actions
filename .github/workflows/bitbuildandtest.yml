@@ -17,7 +17,6 @@ jobs:
     env:
       BIT_TOKEN: ${{ secrets.BIT_TOKEN }}
       BIT_COLLECTION: ${{ secrets.BIT_COLLECTION }}
-      GH_USERNAME: ${{ github.actor }}
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
