@@ -24,6 +24,6 @@ Alert.propTypes = {
 }
 
 Alert.defaultProps = {
-  text: 'Alert text',
+  text: 'Alert',
   color: getRandomColor(),
 }
