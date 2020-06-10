@@ -6,9 +6,9 @@ name: Bit export CI
 # events but only for the master branch
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -21,23 +21,23 @@ jobs:
       BIT_COLLECTION: ${{ secrets.BIT_COLLECTION }}
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
 
-    # Install dependencies and build app
-    - name: Install Dependencies
-      run: npm install
-    - name: Install bit-bin
-      run: sudo npm install bit-bin -g
-    - name: Bit tag & Bit export
-      run: |
-        bit config set analytics_reporting false
-        bit config set anonymous_reporting false
-        bit config set user.token $BIT_TOKEN
-        bit config 
+      # Install dependencies and build app
+      - name: Install Dependencies
+        run: npm install
+      - name: Install bit-bin
+        run: sudo npm install bit-bin -g
+      - name: Bit tag & Bit export
+        run: |
+          bit config set analytics_reporting false
+          bit config set anonymous_reporting false
+          bit config set user.token $BIT_TOKEN
+          bit config 
 
-        bit -v && bit import && bit build
+          bit -v && bit import
 
-        bit status
-        bit tag -a
-        bit export $BIT_COLLECTION
+          bit status
+          bit tag -a
+          bit export $BIT_COLLECTION

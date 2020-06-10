@@ -6,9 +6,9 @@ name: Build CI
 # events but only for the master branch
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -20,11 +20,11 @@ jobs:
       BIT_TOKEN: ${{ secrets.BIT_TOKEN }}
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
 
-    # Install dependencies and build app
-    - name: Install Dependencies
-      run: npm install
-    - name: Build app
-      run: npm run build
+      # Install dependencies and build app
+      - name: Install Dependencies
+        run: npm install
+      - name: Build app
+        run: npm run build

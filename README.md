@@ -10,6 +10,7 @@ How to integrate Bit in your workflow with GitHub Actions.
 ## npm install for public or private [Bit components](https://github.com/teambit/bit) during CI (for projects that install components)
 
 For installing public components you just need to config the bit registry, to do so create in your project root directory an `.npmrc` file and put the following code inside:
+
 ```
 @bit:registry=https://node.bit.dev
 always-auth=true
@@ -17,16 +18,20 @@ always-auth=true
 
 For installing private components, we need to save our `BIT_TOKEN` in the repository settings.
 Follow these setups to do this:
+
 - Read how creating encrypted secrets for a repository (https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets#creating-encrypted-secrets-for-a-repository).
 - Create a new secret and name it `BIT_TOKEN` and set your Bit token in the value, to get your token, run `bit config get user.token` on your local terminal.
 - Update the `.npmrc` file to include the token registry:
+
 ```
 @bit:registry=https://node.bit.dev
 //node.bit.dev/:_authToken=${BIT_TOKEN}
 always-auth=true
 ```
+
 - Now use your secret in the workflows file, [read more about it](https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets#using-encrypted-secrets-in-a-workflow).
-For example:
+  For example:
+
 ```
 ...
 jobs:
@@ -57,7 +62,8 @@ jobs:
 - Read how creating encrypted secrets for a repository (https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets#creating-encrypted-secrets-for-a-repository).
 - Create a new secret and name it `BIT_COLLECTION` and set your collection in the value: `<USER_NAME>.<COLLECTION_NAME>`. For example: `joshk.bit-with-github-actions`.
 - Create a new workflow file for bit export commands. Inside the file we need to do the following: configure Bit token, install Bit, run bit import, build, tag and export. Check out the [workflows file](.github/workflows/bitexport.yml) I created for this.
-Bit export workflow file example:
+  Bit export workflow file example:
+
 ```
 ...
 jobs:
@@ -83,13 +89,14 @@ jobs:
         bit config set analytics_reporting false
         bit config set anonymous_reporting false
         bit config set user.token $BIT_TOKEN
-        bit config 
+        bit config
 
-        bit -v && bit import && bit build
+        bit -v && bit import
 
         bit status
         bit tag -a
         bit export $BIT_COLLECTION
 ...
 ```
+
 Bit will export components only if changes are made.

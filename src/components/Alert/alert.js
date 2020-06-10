@@ -1,8 +1,29 @@
-import React from "react";
-import { getRandomColor } from "@bit/joshk.jotils.get-random-color";
-import { Label } from "@bit/bit.base-ui.elements.label";
-import styles from './alert.module.css';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { getRandomColor } from '@bit/joshk.jotils.get-random-color'
+import { Label } from '@bit/bit.base-ui.elements.label'
+import styles from './alert.module.css'
 
-export const Alert = ({ text, color = getRandomColor() }) => {
-  return <Label color={color} className={styles.alert}>{text}</Label>; 
-};
+export const Alert = ({ text, color }) => {
+  return (
+    <Label color={color} className={styles.alert}>
+      {text}
+    </Label>
+  )
+}
+
+Alert.propTypes = {
+  /**
+   * text to be shown
+   */
+  text: PropTypes.string.isRequired,
+  /**
+   * background color
+   */
+  color: PropTypes.string,
+}
+
+Alert.defaultProps = {
+  text: '',
+  color: getRandomColor(),
+}
