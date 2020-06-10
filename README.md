@@ -39,7 +39,7 @@ always-auth=true
 - Track, tag and export components to your collection, [Alert component for example](src/components/Alert).
 - Read how creating encrypted secrets for a repository (https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets#creating-encrypted-secrets-for-a-repository).
 - Create a new secret and name it `BIT_COLLECTION` and set your collection in the value: `<USER_NAME>.<COLLECTION_NAME>`. For example: `joshk.bit-with-github-actions`.
-- Create a new workflow file for bit export commands. Inside the file we need to do the following: configure Bit token, install Bit, run bit import, build&test, tag and export(tag and export will run only if changes are made to components).
+- Create a new workflow file for bit export commands. Inside the file we need to do the following: configure Bit token, install Bit, run bit import, build&test, tag and export.
   Check out the [workflows file](.github/workflows/bitexport.yml) I created for this, it will run when push to master are made(you can change it to your needs).
   Bit will tag components only if changes are made, and it will export and commit back to master the changes that are made to the `.bitmap` file.
 

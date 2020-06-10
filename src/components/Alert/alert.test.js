@@ -20,7 +20,7 @@ afterEach(() => {
 describe('Alert Component Testing', () => {
   it('Renders hello title', () => {
     act(() => {
-      ReactDOM.render(<Alert text="hello" />, rootContainer)
+      ReactDOM.render(<Alert text="hello-break-test" />, rootContainer)
     })
     const text = rootContainer.querySelector('div')
     expect(text.textContent).to.equal('hello')
