@@ -29,74 +29,23 @@ Follow these setups to do this:
 always-auth=true
 ```
 
-- Now use your secret in the workflows file, [read more about it](https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets#using-encrypted-secrets-in-a-workflow).
-  For example:
-
-```
-...
-jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-    env:
-      BIT_TOKEN: ${{ secrets.BIT_TOKEN }}
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
-
-    # Install dependencies and build app
-    - name: Install Dependencies
-      run: npm install
-    - name: Build app
-      run: npm run build
-...
-```
+- Now use your secret in the [main workflows file](.github/workflows/main.yml), [read more about it](https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets#using-encrypted-secrets-in-a-workflow).
 
 ## bit export during during CI
 
 - Create your collection in [bit.dev](bit.dev).
 - Import the [compiler you need](https://bit.dev/bit/envs).
-- Track, tag and export components to your collection, [Alert component for example](src/components/Alert.js).
+- Import the [tester you need](https://bit.dev/bit/envs).
+- Track, tag and export components to your collection, [Alert component for example](src/components/Alert).
 - Read how creating encrypted secrets for a repository (https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets#creating-encrypted-secrets-for-a-repository).
 - Create a new secret and name it `BIT_COLLECTION` and set your collection in the value: `<USER_NAME>.<COLLECTION_NAME>`. For example: `joshk.bit-with-github-actions`.
-- Create a new workflow file for bit export commands. Inside the file we need to do the following: configure Bit token, install Bit, run bit import, build, tag and export. Check out the [workflows file](.github/workflows/bitexport.yml) I created for this.
-  Bit export workflow file example:
+- Create a new workflow file for bit export commands. Inside the file we need to do the following: configure Bit token, install Bit, run bit import, build&test, tag and export.
+  Check out the [workflows file](.github/workflows/bitexport.yml) I created for this, it will run when push to master are made(you can change it to your needs).
+  Bit will export components only if changes are made.
 
-```
-...
-jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-    env:
-      BIT_TOKEN: ${{ secrets.BIT_TOKEN }}
-      BIT_COLLECTION: ${{ secrets.BIT_COLLECTION }}
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
+## Run Bit build & test on PR's
 
-    # Install dependencies and build app
-    - name: Install Dependencies
-      run: npm install
-    - name: Install bit-bin
-      run: sudo npm install bit-bin -g
-    - name: Bit tag & Bit export
-      run: |
-        bit config set analytics_reporting false
-        bit config set anonymous_reporting false
-        bit config set user.token $BIT_TOKEN
-        bit config
-
-        bit -v && bit import
-
-        bit status
-        bit tag -a
-        bit export $BIT_COLLECTION
-...
-```
-
-Bit will export components only if changes are made.
+When someone in your team made a change to a component, you want to be sure that everything is working well before exporting a new version of it.  
+For this, I wrote another [workflows file](.github/workflows/bitbuildandtest.yml), and it will run when pull requests are made to master(you can change it to your needs).
+After all the checks has passed, you can merge it, and what happens now?  
+The [bit export workflows file](.github/workflows/bitexport.yml) will run automatically, and it will export and commit back to master the changes that are made to the `.bitmap` file.
