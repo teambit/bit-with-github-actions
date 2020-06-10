@@ -45,5 +45,5 @@ jobs:
         run: |
           git config --global user.name 'Josh Kuttler'
           git config --global user.email 'JoshK2@users.noreply.github.com'
-          git commit -am "Automated report"
+          git commit -am "Automated commit"
           git push
