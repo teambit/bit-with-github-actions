@@ -21,7 +21,7 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-       
+
       # Install dependencies and build app
       - name: Install Dependencies
         run: npm install
@@ -40,6 +40,7 @@ jobs:
         id: bitexport
         run: |
           bit status
+          echo "::set-output name=bitstatus::bit status"
           bit tag -a
           bit export $BIT_COLLECTION
       - name: Commit changes
