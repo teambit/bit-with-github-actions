@@ -37,7 +37,6 @@ jobs:
         run: |
           bit -v && bit import
       - name: bit export
-        id: bitexport
         run: |
           bit status
           bit tag -a
