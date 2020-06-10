@@ -1,5 +1,4 @@
 import React from 'react'
-import logo from './logo.svg'
 import './App.css'
 import { Alert } from './components/Alert'
 //using a component from a private collection
