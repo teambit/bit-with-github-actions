@@ -1,11 +1,11 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Bit export CI
+name: Bit build and test CI
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
 on:
-  push:
+  pull_request:
     branches: [master]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -28,7 +28,7 @@ jobs:
         run: npm install
       - name: Install bit-bin
         run: sudo npm install bit-bin -g
-      - name: Bit tag & Bit export
+      - name: Bit build & Bit test
         run: |
           bit config set analytics_reporting false
           bit config set anonymous_reporting false
@@ -38,11 +38,4 @@ jobs:
           bit -v && bit import
 
           bit status
-          bit tag -a
-          bit export $BIT_COLLECTION
-      - name: Commit changes
-        run: |
-          git config --global user.name '$GH_USERNAME'
-          git config --global user.email '$GH_USERNAME@users.noreply.github.com'
-          git commit -am "Automated commit"
-          git push
+          bit test
