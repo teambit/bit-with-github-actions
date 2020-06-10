@@ -28,20 +28,24 @@ jobs:
         run: npm install
       - name: Install bit-bin
         run: sudo npm install bit-bin -g
-      - name: Bit tag & Bit export
+      - name: bit config
         run: |
           bit config set analytics_reporting false
           bit config set anonymous_reporting false
           bit config set user.token $BIT_TOKEN
-          bit config 
-
+          bit config
+      - name: bit import
+        run: |
           bit -v && bit import
-
+      - name: bit export
+        id: bitexport
+        run: |
           bit status
           bit tag -a
           bit export $BIT_COLLECTION
       - name: Commit changes
         run: |
+          echo ${{ steps.bitexport.outputs }}
           git config --global user.name '$GH_USERNAME'
           git config --global user.email '$GH_USERNAME@users.noreply.github.com'
           git commit -am "Automated commit"
