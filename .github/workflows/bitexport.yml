@@ -45,7 +45,8 @@ jobs:
           bit export $BIT_COLLECTION
       - name: Commit changes
         run: |
-          echo ${{ toJson(steps.bitexport.outputs) }}
+          echo ${{ toJson(steps.bitexport) }}
+          echo ${{ toJson(github) }}
           git config --global user.name '$GH_USERNAME'
           git config --global user.email '$GH_USERNAME@users.noreply.github.com'
           git commit -am "Automated commit"
