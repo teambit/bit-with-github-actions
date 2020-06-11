@@ -1,6 +1,7 @@
 import React from 'react'
 import './App.css'
 import { Alert } from './components/Alert'
+import { Button } from './components/Button'
 //using a component from a private collection
 import { TitleH1 } from '@bit/joshk.private-components.title-h1'
 
@@ -16,6 +17,8 @@ function App() {
         <Alert text="Josh" color="orange" />
         With random color
         <Alert text="Josh" />
+        <br />
+        <Button text="Click" onClick={() => alert('on click event')} />
       </header>
     </div>
   )
