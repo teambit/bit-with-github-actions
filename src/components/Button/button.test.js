@@ -21,7 +21,7 @@ describe('Alert Component Testing', () => {
   it('Renders click in button', () => {
     act(() => {
       ReactDOM.render(
-        <Button text="click" onClick={() => alert('on click')} />,
+        <Button text="break test" onClick={() => alert('on click')} />,
         rootContainer
       )
     })
