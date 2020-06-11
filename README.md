@@ -37,15 +37,24 @@ always-auth=true
 - Import the [compiler you need](https://bit.dev/bit/envs).
 - Import the [tester you need](https://bit.dev/bit/envs).
 - Track, tag and export components to your collection, [Alert component for example](src/components/Alert).
-- Read how creating encrypted secrets for a repository (https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets#creating-encrypted-secrets-for-a-repository).
-- Create a new secret and name it `BIT_COLLECTION` and set your collection in the value: `<USER_NAME>.<COLLECTION_NAME>`. For example: `joshk.bit-with-github-actions`.
 - Create a new workflow file for bit export commands. Inside the file we need to do the following: configure Bit token, install Bit, run bit import, build&test, tag and export.
-  Check out the [workflows file](.github/workflows/bitexport.yml) I created for this, it will run when push to master are made(you can change it to your needs).
+  Check out the [workflows file](.github/workflows/bitexport.yml) I wrote about this, it will run when push to master are made(you can change/add branches it to your needs).
   Bit will tag components only if changes are made, and it will export and commit back to master the changes that are made to the `.bitmap` file.
+- The components will be exported to the default scope that we can configure in the Bit config object inside the `package.json` file.
+  ```
+  "bit": {
+    ...
+    "defaultScope": "<username/organization>.<collection>"
+  }
+  ```
 
 ## Run Bit build & test on PR's
 
 When someone in your team made a change to a component, you want to be sure that everything is working well before exporting a new version of it.  
-For this, I wrote another [workflows file](.github/workflows/bitbuildandtest.yml), and it will run when pull requests are made to master(you can change it to your needs).
+For this, I wrote another [workflows file](.github/workflows/bitbuildandtest.yml), and it will run when pull requests are made to master(you can change/add branches it to your needs).
 After all the checks has passed, you can merge it, and what happens now?  
 The [bit export workflows file](.github/workflows/bitexport.yml) will run automatically, and it will export and commit back to master the changes that are made to the `.bitmap` file.
+
+### [Open PR with success workflow example]()
+
+### [Open PR with failure workflow example]()
