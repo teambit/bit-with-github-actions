@@ -20,7 +20,10 @@ afterEach(() => {
 describe('Alert Component Testing', () => {
   it('Renders click in button', () => {
     act(() => {
-      ReactDOM.render(<Button text="click" />, rootContainer)
+      ReactDOM.render(
+        <Button text="click" onClick={() => alert('on click')} />,
+        rootContainer
+      )
     })
     const text = rootContainer.querySelector('div')
     expect(text.textContent).to.equal('click')

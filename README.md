@@ -47,6 +47,8 @@ always-auth=true
     "defaultScope": "<username/organization>.<collection>"
   }
   ```
+- When a new component is tracked locally, and then export during the CI, Bit exports it to the default collection.
+- When a component test fails in the CI, it is not exported. ([CI example](https://github.com/teambit/bit-with-github-actions/runs/761573923?check_suite_focus=true))
 
 ## Run Bit build & test on PR's
 
