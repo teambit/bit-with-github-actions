@@ -25,7 +25,7 @@ describe('Alert Component Testing', () => {
         rootContainer
       )
     })
-    const text = rootContainer.querySelector('div')
+    const text = rootContainer.querySelector('button')
     expect(text.textContent).to.equal('click')
   })
 })
