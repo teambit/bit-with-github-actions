@@ -19,7 +19,7 @@ always-auth=true
 For installing private components, we need to save our `BIT_TOKEN` in the repository settings.
 Follow these setups to do this:
 
-- Read how creating encrypted secrets for a repository (https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets#creating-encrypted-secrets-for-a-repository).
+- Read how creating encrypted [secrets for a repository](https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets#creating-encrypted-secrets-for-a-repository).
 - Create a new secret and name it `BIT_TOKEN` and set your Bit token in the value, to get your token, run `bit config get user.token` on your local terminal.
 - Update the `.npmrc` file to include the token registry:
 
@@ -57,6 +57,18 @@ For this, I wrote another [workflows file](.github/workflows/bitbuildandtest.yml
 After all the checks has passed, you can merge it, and what happens now?  
 The [bit export workflows file](.github/workflows/bitexport.yml) will run automatically, and it will export and commit back to master the changes that are made to the `.bitmap` file.
 
-### [Open PR with success workflow example]()
+### [Open PR with success workflow example](https://github.com/teambit/bit-with-github-actions/pull/7)
 
-### [Open PR with failure workflow example]()
+<p align="center">
+  <a href="https://github.com/teambit/bit-with-github-actions/pull/7"><img src="https://i.imagesup.co/images2/6fef0746b7a08cb65295ed0bdf1c2e6f7bc1e01d.png"></a>
+</p>
+
+### [Open PR with failure workflow example](https://github.com/teambit/bit-with-github-actions/pull/6)
+
+<p align="center">
+  <a href="https://github.com/teambit/bit-with-github-actions/pull/6"><img src="https://i.imagesup.co/images2/0a53b2747d1fe38106ee6e4928db8a361a03f906.png"></a>
+</p>
+
+## Options
+
+- Skip CI: skip bit export workflow by entering `skip-ci` in the commit message.
