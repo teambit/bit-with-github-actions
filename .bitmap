@@ -29,7 +29,7 @@
         "origin": "AUTHORED",
         "exported": true
     },
-    "joshk.bit-with-github-actions/button@0.0.1": {
+    "joshk.bit-with-github-actions/button@0.0.2": {
         "files": [
             {
                 "relativePath": "src/components/Button/button.js",
