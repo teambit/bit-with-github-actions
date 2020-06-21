@@ -57,5 +57,33 @@
         "origin": "AUTHORED",
         "exported": true
     },
+    "title": {
+        "files": [
+            {
+                "relativePath": "src/components/Title/index.js",
+                "test": false,
+                "name": "index.js"
+            },
+            {
+                "relativePath": "src/components/Title/title.js",
+                "test": false,
+                "name": "title.js"
+            },
+            {
+                "relativePath": "src/components/Title/title.module.css",
+                "test": false,
+                "name": "title.module.css"
+            },
+            {
+                "relativePath": "src/components/Title/title.test.js",
+                "test": true,
+                "name": "title.test.js"
+            }
+        ],
+        "mainFile": "src/components/Title/index.js",
+        "trackDir": "src/components/Title",
+        "origin": "AUTHORED",
+        "exported": false
+    },
     "version": "14.7.6"
 }
