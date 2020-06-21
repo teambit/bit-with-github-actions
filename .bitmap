@@ -57,7 +57,7 @@
         "origin": "AUTHORED",
         "exported": true
     },
-    "title": {
+    "joshk.bit-with-github-actions/title@0.0.1": {
         "files": [
             {
                 "relativePath": "src/components/Title/index.js",
@@ -83,7 +83,7 @@
         "mainFile": "src/components/Title/index.js",
         "trackDir": "src/components/Title",
         "origin": "AUTHORED",
-        "exported": false
+        "exported": true
     },
     "version": "14.7.6"
 }
