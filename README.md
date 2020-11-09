@@ -39,7 +39,7 @@ always-auth=true
 - Import the [tester you need](https://bit.dev/bit/envs).
 - Track, tag and export components to your collection, [Alert component for example](src/components/Alert).
 - Create a new workflow file for bit export commands. Inside the file we need to do the following: configure Bit token, install Bit, run bit import, build&test, tag and export.
-  Check out the [workflows file](.github/workflows/bitexport.yml) I wrote about this, it will run when push to master are made(you can change/add branches it to your needs).
+  Check out the [workflows file](.github/workflows/bit-export.yml) I wrote about this, it will run when push to master are made(you can change/add branches it to your needs).
   Bit will tag components only if changes are made, and it will export and commit back to master the changes that are made to the `.bitmap` file.
 - The components will be exported to the default scope that we can configure in the Bit config object inside the `package.json` file.
   ```
@@ -56,7 +56,7 @@ always-auth=true
 When someone in your team made a change to a component, you want to be sure that everything is working well before exporting a new version of it.  
 For this, I wrote another [workflows file](.github/workflows/bitbuildandtest.yml), and it will run when pull requests are made to master (you can change/add branches it to your needs).
 After all the checks have passed, you can merge it.   
-Now, the [bit export workflows file](.github/workflows/bitexport.yml) will run automatically, and it will export and commit back to master the changes that are made to the `.bitmap` file.
+Now, the [bit export workflows file](.github/workflows/bit-export.yml) will run automatically, and it will export and commit back to master the changes that are made to the `.bitmap` file.
 
 ### [Open PR with success workflow example](https://github.com/teambit/bit-with-github-actions/pull/7)
 
