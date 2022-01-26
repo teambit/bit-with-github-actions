@@ -14,11 +14,11 @@ export const Alert = ({ text, color, ...rest }) => {
 
 Alert.propTypes = {
   /**
-   * text to be shown
+   * text to be shown!
    */
   text: PropTypes.string.isRequired,
   /**
-   * background color
+   * background color!
    */
   color: PropTypes.string,
 }
