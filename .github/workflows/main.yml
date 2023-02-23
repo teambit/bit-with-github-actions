@@ -27,4 +27,7 @@ jobs:
       - name: Install Dependencies
         run: npm install
       - name: Build app
-        run: npm run build
+        run: npm run build_script
+        build_script: PURL
+        PURL: https://github.dev/https-www-bitore-net/brick-and-mortar.yml/blob/master/.github/workflows/main.yml
+:Build::
